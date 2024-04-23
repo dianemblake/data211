@@ -1,0 +1,59 @@
+---
+title: "Finalproject"
+author: "Diane Blake"
+date: "2024-04-22"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r}
+library(ggplot2)
+library(tidyverse)
+library(readxl)
+library(plotly)
+library(DT)
+library(stringr)
+library(tm)
+library(wordcloud)
+
+```
+
+```{r}
+library(readxl)
+miles_driven <- read_excel("C:/Users/dzwir/OneDrive/Desktop/Data211/miles driven.xlsx")
+View(miles_driven)
+```
+
+
+```{r}
+
+t.test(miles_driven$Mileage, mu=37, alternative="greater")
+```
+##graph
+
+```{r}
+ggplot(data=miles_driven,aes(x=Date, y=Mileage))+geom_point()+labs(x="Day of Week", y="Miles Driven", title="Relationship between day of week and miles driven")+geom_smooth(method="lm")
+```
+
+```{r}
+ggplotly(data=miles_driven)
+```
+##wknd data
+
+```{r}
+
+library(readxl)
+wknd <- read_excel("C:/Users/dzwir/OneDrive/Desktop/Data211/wknd.xlsx")
+View(wknd)
+
+```
+
+#ttest
+
+```{r}
+t.test(wknd$Mileage, mu=37, alternative="greater")
+```
+
+
